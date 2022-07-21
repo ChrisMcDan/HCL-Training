@@ -3,16 +3,16 @@
 acceptClothes accepts the no_ofClothes as argument & returns the no_ofClothes.
 
 2. Create a class Student which has following methods:  
-* Average: which would accept marks of 3 examinations & return whether the student has passed or failed depending on whether he has scored an average above 50 or not?  
-* Input: which would accept the name of the student & returns the name?
+  * Average: which would accept marks of 3 examinations & return whether the student has passed or failed depending on whether he has scored an average above 50 or not?  
+  * Input: which would accept the name of the student & returns the name?
 
 3. Create a Bank class with methods deposit & withdraw.  
 The deposit method would accept attributes amount & balance (returns the new balance which is the sum of amount & balance).  
 Similarly, the withdraw method would accept the attributes amount & balance & returns the new balance
-if(balance >= amount or return 0 otherwise.
+if (balance >= amount or return 0 otherwise).
 
 4. Create a Vehicle having following attributes: Vehicle no, Model manufacturer and color.  
-Create truck which has following additional attributes: loadingCapacity(100 tons).  
+Create truck which has following additional attributes: loadingCapacity (100 tons).  
 Add a behavior to change the color and loadingCapacity. 
 Display the updated truck details.
 
