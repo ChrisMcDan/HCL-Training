@@ -49,5 +49,7 @@ public class Array
         {
             System.out.println(emp2);
         }
+        
+//        Array.asList(emp).forEach(System.out::println);	//Example of Functional programming.
     }
 }
