@@ -3,7 +3,7 @@
    - swtichO
    - acceptClothes
    - acceptDetergent
-   - switchOFF.  
+   - switchOFF.
 acceptClothes accepts the no_ofClothes as argument & returns the no_ofClothes.
 
 2. Create a class Student which has following methods:  
