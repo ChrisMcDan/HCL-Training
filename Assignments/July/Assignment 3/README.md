@@ -1,10 +1,9 @@
 # Assignment 3
-1. Create a washing machine class with methods:
+1. Create a washing machine class with the methods:
    - switchON
-   - acceptClothes
+   - acceptClothes (accepts the no_ofClothes as an argument & returns the no_ofClothes.)
    - acceptDetergent
-   - switchOFF.  
-   acceptClothes accepts the no_ofClothes as an argument & returns the no_ofClothes.
+   - switchOFF.
 
 2. Create a class Student which has following methods:  
    - Average: which would accept marks of 3 examinations & return whether the student has passed or failed depending on whether he has scored an average above 50 or not?  
