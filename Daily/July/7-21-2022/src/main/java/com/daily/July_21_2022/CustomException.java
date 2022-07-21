@@ -14,7 +14,7 @@ class Main
 	{
 		try
 		{
-			throw new CustomException("Exception");	//SSingle line explicitly.
+			throw new CustomException("Exception");	//Single line explicitly.
 		}catch(CustomException e) {System.out.println(e.getMessage());}
 	}
 }

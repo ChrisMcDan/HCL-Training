@@ -9,7 +9,10 @@ public class TryWithResources
 		try(FileOutputStream fos = new FileOutputStream("Chris.txt"))
 		{
 			String txt = "Welcome to Output Streams in Java!";
+			
+			//Converts the string into a byte of array.
 			byte arr[] = txt.getBytes();
+			
 			fos.write(arr);
 		}catch(Exception e) {System.out.println(e);}
 	}
