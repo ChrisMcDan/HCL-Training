@@ -1,4 +1,5 @@
 # Assignment 2
+
 1. Print the Fibonacci Series by getting the value from the user (0,1,1,2,3,5,8,13...)?
 2. Print the prime number by getting the value from the user?
 3. Write a Java program to swap two variables.

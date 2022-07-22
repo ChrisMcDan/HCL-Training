@@ -1,4 +1,5 @@
 # Assignment 1
+
 1. Create a new simple maven project.
 2. Try all the maven life cycle goals.
 3. Create account in github if you don't have one.
