@@ -1,4 +1,4 @@
-package com.assignments.JulyN;
+package com.assignments.July;
 
 import static org.junit.Assert.assertTrue;
 
