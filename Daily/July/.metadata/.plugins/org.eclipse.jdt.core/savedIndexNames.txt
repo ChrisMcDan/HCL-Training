@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\me\Documents\HCL Training\Daily\JulyN\.metadata\.plugins\org.eclipse.jdt.core

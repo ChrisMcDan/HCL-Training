@@ -1,0 +1,21 @@
+//July 22, 2022
+
+package com.daily.Inner;
+
+public class OuterClass
+{
+	private int x = 34;
+
+	class Inner
+	{
+		void display()
+		{
+			System.out.println("The private value of outerclass variable x is: " + x);
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		System.out.println("Hello World!");
+	}
+}
