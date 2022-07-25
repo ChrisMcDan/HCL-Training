@@ -2,10 +2,11 @@
 
 Java 8
 
-Create a class, Employee, while the properties of an Employee are id,name,age,gender,dept,yearofjoining,salary;
+Create a class, Employee, while the properties of an Employee are id, name, age, gender, dept, yearofjoining, and salary.
+
 Based on the above context:
 
-Based on the questions try to create hard coded data; Useing only java 8 features.
+Based on the questions try to create hard coded data; Using only java 8 features.
 
 1. How many male and female employees are there in this organization?
 2. Find out Average age of male and female emps?
