@@ -51,6 +51,7 @@ public class EmployeeAssignment
 		list.add(new Employee(104, 37, 2018, 90000, "Gal Gadot", "Female", "IT"));
 		list.add(new Employee(105, 77, 1995, 200000, "Jane Doe", "Female", "IT"));
 		list.add(new Employee(106, 24, 2018, 70000, "Janice", "Female", "Maintenance"));
+		list.add(new Employee(107, 27, 2016, 80000, "Jenny", "Female", "Maintenance"));
 		
 		
 		
