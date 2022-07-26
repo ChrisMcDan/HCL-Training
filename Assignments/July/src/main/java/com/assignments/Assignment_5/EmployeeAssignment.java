@@ -28,14 +28,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 class Employee
 {
-	int empID;	//Employee ID.
-	int empAge;	//Employee Age.
-	int empYrJoin;	//Employee Year of Joining.
-	double empSalary;	//Employee Salary.
+	private int empID;	//Employee ID.
+	private int empAge;	//Employee Age.
+	private int empYrJoin;	//Employee Year of Joining.
+	private double empSalary;	//Employee Salary.
 
-	String empName;	//Employee Name.
-	String empGender;	//Employee Gender.
-	String empDept;	//Employee Department.
+	private String empName;	//Employee Name.
+	private String empGender;	//Employee Gender.
+	private String empDept;	//Employee Department.
 }
 
 public class EmployeeAssignment
