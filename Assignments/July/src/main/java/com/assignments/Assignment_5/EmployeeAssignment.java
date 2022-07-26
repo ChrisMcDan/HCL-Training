@@ -19,6 +19,13 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 class Employee
 {
 	int empID;	//Employee ID.
@@ -30,51 +37,51 @@ class Employee
 	String empGender;	//Employee Gender.
 	String empDept;	//Employee Department.
 	
-	public Employee(int empID, int empAge, int empYrJoin, double empSalary, String empName, String empGender, String empDept)
-	{
-		this.empID = empID;
-		this.empAge = empAge;
-		this.empYrJoin = empYrJoin;
-		this.empSalary = empSalary;
-		this.empName = empName;
-		this.empGender = empGender;
-		this.empDept = empDept;
-	}
-	
-	public int getID()
-	{
-		return empID;
-	}
-	
-	public int getAge()
-	{
-		return empAge;
-	}
-	
-	public int getYrJoin()
-	{
-		return empYrJoin;
-	}
-	
-	public double getSalary()
-	{
-		return empSalary;
-	}
-	
-	public String getName()
-	{
-		return empName;
-	}
-	
-	public String getGender()
-	{
-		return empGender;
-	}
-	
-	public String getDept()
-	{
-		return empDept;
-	}
+//	public Employee(int empID, int empAge, int empYrJoin, double empSalary, String empName, String empGender, String empDept)
+//	{
+//		this.empID = empID;
+//		this.empAge = empAge;
+//		this.empYrJoin = empYrJoin;
+//		this.empSalary = empSalary;
+//		this.empName = empName;
+//		this.empGender = empGender;
+//		this.empDept = empDept;
+//	}
+//	
+//	public int getID()
+//	{
+//		return empID;
+//	}
+//	
+//	public int getAge()
+//	{
+//		return empAge;
+//	}
+//	
+//	public int getYrJoin()
+//	{
+//		return empYrJoin;
+//	}
+//	
+//	public double getSalary()
+//	{
+//		return empSalary;
+//	}
+//	
+//	public String getName()
+//	{
+//		return empName;
+//	}
+//	
+//	public String getGender()
+//	{
+//		return empGender;
+//	}
+//	
+//	public String getDept()
+//	{
+//		return empDept;
+//	}
 }
 
 public class EmployeeAssignment
@@ -94,7 +101,7 @@ public class EmployeeAssignment
 		
 		
 		/**********1. How many male and female employees are there in this organization?**********/
-		Map<String, Long> numGender = list.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.counting()));
+		Map<String, Long> numGender = list.stream().collect(Collectors.groupingBy(Employee::getEmpGender, Collectors.counting()));
 		
 		System.out.println("----------------Question 1----------------");
 		
@@ -103,7 +110,7 @@ public class EmployeeAssignment
 		
 		
 		/**********2. Find out Average age of male and female employees?**********/
-		Map<String, Double> avgAge = list.stream().collect(Collectors.groupingBy(Employee::getGender, Collectors.averagingInt(Employee::getAge)));
+		Map<String, Double> avgAge = list.stream().collect(Collectors.groupingBy(Employee::getEmpGender, Collectors.averagingInt(Employee::getEmpAge)));
 
 		System.out.println("\n----------------Question 2----------------");
 		
@@ -112,18 +119,18 @@ public class EmployeeAssignment
 		
 		
 		/**********3. Find the highest paid employee in this organization?**********/
-		Optional<Employee> highestPay = list.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary)));
+		Optional<Employee> highestPay = list.stream().collect(Collectors.maxBy(Comparator.comparingDouble(Employee::getEmpSalary)));
 
 		Employee highest = highestPay.get();
 
 		System.out.println("\n----------------Question 3----------------");
 		
-		System.out.println("The highest paid employee is: " + highest.getName() + ", ID: " + highest.getID());
+		System.out.println("The highest paid employee is: " + highest.getEmpName() + ", ID: " + highest.getEmpID());
 		
 		
 		
 		/**********4. List all the names of employees who have joined after 2015?**********/
-		Map<String, List<Employee>> joinAfter = list.stream().filter(emp -> emp.getYrJoin() > 2015).collect(Collectors.groupingBy(Employee::getName));
+		Map<String, List<Employee>> joinAfter = list.stream().filter(emp -> emp.getEmpYrJoin() > 2015).collect(Collectors.groupingBy(Employee::getEmpName));
 
 		System.out.println("\n----------------Question 4----------------");
 		
@@ -132,18 +139,18 @@ public class EmployeeAssignment
 		
 		
 		/**********5. Find out the senior most employee in this organization?**********/
-		Optional<Employee> seniorEmployee = list.stream().sorted(Comparator.comparingInt(Employee::getYrJoin)).findFirst();
+		Optional<Employee> seniorEmployee = list.stream().sorted(Comparator.comparingInt(Employee::getEmpYrJoin)).findFirst();
 		
 		Employee longest = seniorEmployee.get();
 
 		System.out.println("\n----------------Question 5----------------");
 		
-		System.out.println("The Employee who's been here the longest is: " + longest.getName() + ", ID: " + highest.getID());
+		System.out.println("The Employee who's been here the longest is: " + longest.getEmpName() + ", ID: " + highest.getEmpID());
 		
 		
 		
 		/**********6. Count the number of employees in each department?**********/
-		Map<String, Long> eachDept = list.stream().collect(Collectors.groupingBy(Employee::getDept, Collectors.counting()));
+		Map<String, Long> eachDept = list.stream().collect(Collectors.groupingBy(Employee::getEmpDept, Collectors.counting()));
 
 		System.out.println("\n----------------Question 6----------------");
 		
@@ -152,7 +159,7 @@ public class EmployeeAssignment
 		
 		
 		/**********7. Find which male and female employees are in the Maintenance department?**********/
-		Map<String, List<Employee>> empMaint = list.stream().filter(emp -> emp.getDept() == "Maintenance").collect(Collectors.groupingBy(Employee::getName));
+		Map<String, List<Employee>> empMaint = list.stream().filter(emp -> emp.getEmpDept() == "Maintenance").collect(Collectors.groupingBy(Employee::getEmpName));
 
 		System.out.println("\n----------------Question 7----------------");
 		
@@ -161,7 +168,7 @@ public class EmployeeAssignment
 		
 		
 		/**********8. Find the average salary of male and female employees?**********/
-		Map<String, Double> empAvg = list.stream().collect(Collectors.groupingBy(Employee::getGender,Collectors.averagingDouble(Employee::getSalary)));
+		Map<String, Double> empAvg = list.stream().collect(Collectors.groupingBy(Employee::getEmpGender,Collectors.averagingDouble(Employee::getEmpSalary)));
 
 		System.out.println("\n----------------Question 8----------------");
 		
@@ -170,8 +177,8 @@ public class EmployeeAssignment
 		
 		
 		/**********9. Differentiate the employees who are younger or equal to 30 years from those employees who are older than 25 years?**********/
-		Map<String, List<Employee>> diffAge1 = list.stream().filter(emp -> emp.getAge() <= 30).collect(Collectors.groupingBy(Employee::getName));
-		Map<String, List<Employee>> diffAge2 = list.stream().filter(emp -> emp.getAge() > 25).collect(Collectors.groupingBy(Employee::getName));
+		Map<String, List<Employee>> diffAge1 = list.stream().filter(emp -> emp.getEmpAge() <= 30).collect(Collectors.groupingBy(Employee::getEmpName));
+		Map<String, List<Employee>> diffAge2 = list.stream().filter(emp -> emp.getEmpAge() > 25).collect(Collectors.groupingBy(Employee::getEmpName));
 
 		System.out.println("\n----------------Question 9----------------");
 		
@@ -184,7 +191,7 @@ public class EmployeeAssignment
 		
 		
 		/**********10. List down the names of all employees in each department?**********/
-		Map<String, List<Employee>> empEachDept = list.stream().collect(Collectors.groupingBy(Employee::getDept));
+		Map<String, List<Employee>> empEachDept = list.stream().collect(Collectors.groupingBy(Employee::getEmpDept));
 		
 		Set<Entry<String, List<Employee>>> entrySet = empEachDept.entrySet();
 
@@ -198,7 +205,7 @@ public class EmployeeAssignment
 			
 			for(Employee emp : deptList)
 			{
-				System.out.println(emp.getName());
+				System.out.println(emp.getEmpName());
 			}
 		}
 	}
