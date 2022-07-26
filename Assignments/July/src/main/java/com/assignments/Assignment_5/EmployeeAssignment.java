@@ -36,52 +36,6 @@ class Employee
 	String empName;	//Employee Name.
 	String empGender;	//Employee Gender.
 	String empDept;	//Employee Department.
-	
-//	public Employee(int empID, int empAge, int empYrJoin, double empSalary, String empName, String empGender, String empDept)
-//	{
-//		this.empID = empID;
-//		this.empAge = empAge;
-//		this.empYrJoin = empYrJoin;
-//		this.empSalary = empSalary;
-//		this.empName = empName;
-//		this.empGender = empGender;
-//		this.empDept = empDept;
-//	}
-//	
-//	public int getID()
-//	{
-//		return empID;
-//	}
-//	
-//	public int getAge()
-//	{
-//		return empAge;
-//	}
-//	
-//	public int getYrJoin()
-//	{
-//		return empYrJoin;
-//	}
-//	
-//	public double getSalary()
-//	{
-//		return empSalary;
-//	}
-//	
-//	public String getName()
-//	{
-//		return empName;
-//	}
-//	
-//	public String getGender()
-//	{
-//		return empGender;
-//	}
-//	
-//	public String getDept()
-//	{
-//		return empDept;
-//	}
 }
 
 public class EmployeeAssignment
