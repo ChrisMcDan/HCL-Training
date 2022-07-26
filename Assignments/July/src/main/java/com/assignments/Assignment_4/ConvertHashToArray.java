@@ -9,7 +9,6 @@
 package com.assignments.Assignment_4;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 public class ConvertHashToArray
