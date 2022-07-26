@@ -118,7 +118,7 @@ public class EmployeeAssignment
 
 		System.out.println("\n----------------Question 3----------------");
 		
-		System.out.println("The highest paid employee is: " + highest.getName());
+		System.out.println("The highest paid employee is: " + highest.getName() + ", ID: " + highest.getID());
 		
 		
 		
@@ -138,7 +138,7 @@ public class EmployeeAssignment
 
 		System.out.println("\n----------------Question 5----------------");
 		
-		System.out.println("The Employee who's been here the longest is: " + longest.getName());
+		System.out.println("The Employee who's been here the longest is: " + longest.getName() + ", ID: " + highest.getID());
 		
 		
 		
