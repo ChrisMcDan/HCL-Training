@@ -55,8 +55,8 @@ public class HashMapTest
 		System.out.println("--------------------------------------------------");
 		Collections.sort(entries, (o1, o2) -> o1.getKey().compareTo(o2.getKey()));
 		stuMap.entrySet().stream()
-						 .sorted(Map.Entry.comparingByKey(Comparator.comparing(Student::getStuName).reversed()))
-						 .forEach(System.out::println);
+						.sorted(Map.Entry.comparingByKey(Comparator.comparing(Student::getStuId).reversed()))
+						.forEach(System.out::println);
 		
 //		Iterator<String> itr = map.keySet().iterator();
 //		
