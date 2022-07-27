@@ -1,4 +1,4 @@
-//July 22, 2022
+/*July 22, 2022*/
 
 package com.daily.Collection;
 
@@ -8,10 +8,13 @@ import java.util.List;
 
 public class ArrayListExample
 {
-	//Creates a dynamic array; stores the duplicate elements of different data-types, maintains insertion order
-	//Non-synchronized.
-	//When you retrieve the values it will be faster.
-	//But, when you do manipulation(insert, delete, and update) it will be slower.
+	/*
+	 *Creates a dynamic array; stores the duplicate elements of different data-types, maintains insertion order
+	 *Non-synchronized.
+	 *When you retrieve the values it will be faster.
+	 *But, when you do manipulation(insert, delete, and update) it will be slower.
+	 */
+	
 	public static void main(String[] args)
 	{
 		//Generics -> making sure that it is type safe.
