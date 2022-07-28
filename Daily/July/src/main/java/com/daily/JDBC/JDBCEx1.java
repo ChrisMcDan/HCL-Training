@@ -31,7 +31,7 @@ public class JDBCEx1
 		{
 			System.out.println('\n' + "Emp Number " + rs.getInt(1));
 			System.out.println("Emp Name " + rs.getString("name"));
-			System.out.println("Emp Age " + rs.getInt(1));
+			System.out.println("Emp Age " + rs.getInt(3));
 		}
 	}
 }
