@@ -26,11 +26,18 @@
       <scope>test</scope>
     </dependency>
     
+	    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>8.0.30</version>
+	</dependency>
+    
     <dependency>
-	<groupId>org.projectlombok</groupId>
-	<artifactId>lombok</artifactId>
-	<version>1.18.24</version>
-	<scope>provided</scope>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.24</version>
+		<scope>provided</scope>
     </dependency>
   </dependencies>
 
