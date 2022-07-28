@@ -1,4 +1,4 @@
-# Assignment 6: Employee Management System:
+# Assignment 6: Employee Management System
 
 Java Console -> Front-End  
 MySQL Database -> Back-End (Store at least 5 records minimum.)
