@@ -1,5 +1,6 @@
 # Assignment 6: Employee Management System
 
+JDBC -> Use Prepared and Callable Statement.  
 Java Console -> Front-End  
 MySQL Database -> Back-End (Store at least 5 records minimum.)
 
