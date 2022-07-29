@@ -38,7 +38,7 @@ public class EmpManSys
 			System.out.println("\nWhat would you like to do(Create, Read, Update, Delete, or Exit)?: ");
 			String msg = switchInput.next().toUpperCase();
 			
-			if(switchInput.hasNext())
+			while(true)
 			{
 				switch(msg)
 				{
@@ -85,14 +85,50 @@ public class EmpManSys
 					
 				case "READ":
 	
-					PreparedStatement readStat = con.prepareStatement("SELECT * FROM emp");
-					ResultSet rs = readStat.executeQuery();
+					Scanner readInput = new Scanner(System.in);
+					System.out.println("\nWould you like to read All of the employees, a Single one, or exit(All, Single, or Exit)?: ");
+					String readMsg = readInput.next().toUpperCase();
 					
-					while(rs.next())
+					switch(readMsg)
 					{
-						System.out.println('\n' + "Employee ID	" + rs.getInt(1));
-						System.out.println("Employee Name	" + rs.getString("EmpName"));
-						System.out.println("Employee Age	" + rs.getInt(3));
+					case "ALL":
+						
+						PreparedStatement readStat = con.prepareStatement("SELECT * FROM emp");
+						ResultSet rs = readStat.executeQuery();
+						
+						while(rs.next())
+						{
+							System.out.println('\n' + "Employee ID	" + rs.getInt(1));
+							System.out.println("Employee Name	" + rs.getString("EmpName"));
+							System.out.println("Employee Age	" + rs.getInt(3));
+						}
+						
+						break;
+						
+					case "SINGLE":
+						
+						Scanner singleInput = new Scanner(System.in);
+						System.out.println("\nID of the employee?: ");
+						int empID = singleInput.nextInt();
+						
+						PreparedStatement singleStat = con.prepareStatement("SELECT * FROM emp WHERE empID = ?");
+						
+						singleStat.setInt(1, empID);
+						
+						ResultSet singleRS = singleStat.executeQuery();
+						
+						while(singleRS.next())
+						{
+							System.out.println('\n' + "Employee ID	" + singleRS.getInt(1));
+							System.out.println("Employee Name	" + singleRS.getString("EmpName"));
+							System.out.println("Employee Age	" + singleRS.getInt(3));
+						}
+						
+						break;
+						
+					default:
+						
+						System.out.println("Invalid input");
 					}
 					
 					break;
