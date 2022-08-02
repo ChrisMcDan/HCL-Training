@@ -1,6 +1,6 @@
 /*August 1, 2022*/
 
-package com.daily.model;
+package com.daily.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

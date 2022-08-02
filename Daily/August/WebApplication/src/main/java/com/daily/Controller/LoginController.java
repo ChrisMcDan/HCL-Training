@@ -1,12 +1,12 @@
 /*August 1, 2022*/
 
-package com.daily.controller;
+package com.daily.Controller;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 
-import com.daily.model.User;
+import com.daily.Model.User;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 //Controller-> Navigates between your model and view
 
+@SuppressWarnings("serial")
 @WebServlet("/login")
 
 public class LoginController extends HttpServlet {
@@ -25,7 +26,7 @@ public class LoginController extends HttpServlet {
 			throws ServletException, IOException
 	{
 		res.setContentType("text/html");
-		PrintWriter pw = res.getWriter();
+//		PrintWriter pw = res.getWriter();
 		String uname = req.getParameter("un");
 		String pwd = req.getParameter("pwd");
 		

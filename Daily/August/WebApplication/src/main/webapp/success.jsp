@@ -1,4 +1,4 @@
-<%@ page import="com.daily.model.User" language="java"
+<%@ page import="com.daily.Model.User" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@
  -->
 	<%
 	User u = (User) request.getAttribute("abc");
-	out.println("<h1 style=color:blue>Welcome " + u.getUsername() + "</h1>");
+		out.println("<h1 style=color:blue>Welcome " + u.getUsername() + "</h1>");
 	%>
 </body>
 </html>
