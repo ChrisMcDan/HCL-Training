@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- Setter Method -->
+	<bean id="obj" class="com.daily.Model.Student">
+		<property name="id">
+			<value>20</value>
+		</property>
+		<property name="name">
+			<value>Blaise</value>
+		</property>
+		<property name="address">
+			<value>NY</value>
+		</property>
+	</bean>
+
+	<!-- Constructor Injection <bean id="stu" class="com.daily.Model.Student"> 
+		<constructor-arg value="10" type="int"></constructor-arg> <constructor-arg 
+		value="AjayDeep" type="java.lang.String"></constructor-arg> <constructor-arg 
+		value="Santa Clara" type="java.lang.String"></constructor-arg> </bean> -->
+
+	<bean id="addr" class="com.daily.Model.Address">
+		<constructor-arg value="Pittsburgh"
+			type="java.lang.String">
+		</constructor-arg>
+		<constructor-arg value="PA" type="java.lang.String">
+		</constructor-arg>
+	</bean>
+
+	<!-- Constructor Injection -->
+	<bean id="dep" class="com.daily.Model.Student">
+		<constructor-arg value="22" type="int"></constructor-arg>
+		<constructor-arg value="Chris" type="java.lang.String"></constructor-arg>
+		<constructor-arg value="Hutto" type="java.lang.String"></constructor-arg>
+		<constructor-arg>
+			<ref bean="addr" />
+		</constructor-arg>
+	</bean>
+
+	<!-- Constructor Injection -->
+	<bean id="list" class="com.daily.Model.User">
+		<constructor-arg value="33" type="int"></constructor-arg>
+		<constructor-arg value="Marlon"
+			type="java.lang.String"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>New York</value>
+				<value>Austin</value>
+				<value>Pittsburgh</value>
+				<value>Hutto</value>
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>
+
+ 
