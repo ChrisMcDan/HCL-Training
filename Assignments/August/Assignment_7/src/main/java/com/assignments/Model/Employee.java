@@ -28,7 +28,6 @@ public class Employee
 	private int id;
 	private String fullName;
 	private String userName;
-	private String password;
-	private String address;
-	private String contact;
+	private String state;
+	private String phone;
 }

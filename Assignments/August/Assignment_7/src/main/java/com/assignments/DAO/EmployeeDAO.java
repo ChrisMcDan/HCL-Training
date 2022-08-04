@@ -30,17 +30,17 @@ public class EmployeeDAO
 {
 
 	private static final String INSERT_EMPLOYEE_SQL = "INSERT INTO employee"
-			+ "  (fullname, username, password, address, contact) VALUES "
-			+ " (?, ?, ?, ?, ?, ?);";
+			+ "  (fullName, userName, state, phone) VALUES "
+			+ " (?, ?, ?, ?);";
 
 	private static final String SELECT_EMPLOYEE_BY_ID = "SELECT"
-			+ "id, fullname, username, password, address, contact"
+			+ "id, fullName, userName, state, phone"
 			+ "FROM employee WHERE id = ?;";
 
 	private static final String SELECT_ALL_EMPLOYEES = "SELECT * FROM employee;";
 	private static final String DELETE_EMPLOYEE_SQL = "DELETE FROM employee WHERE id = ?;";
 	private static final String UPDATE_EMPLOYEE_SQL = "UPDATE employee SET"
-			+ "fullname = ?, username = ?, password = ?, address = ?, contact = ?;";
+			+ "fullname = ?, username = ?, state = ?, phone = ?;";
 
 	public EmployeeDAO(){}
 
@@ -79,9 +79,8 @@ public class EmployeeDAO
 		{
 			preparedStatement.setString(1, emp.getFullName());
 			preparedStatement.setString(3, emp.getUserName());
-			preparedStatement.setString(4, emp.getPassword());
-			preparedStatement.setString(5, emp.getAddress());
-			preparedStatement.setString(6, emp.getContact());
+			preparedStatement.setString(4, emp.getState());
+			preparedStatement.setString(5, emp.getPhone());
 
 			System.out.println(preparedStatement);
 			// Step 3: Execute the query or update query.
@@ -138,11 +137,10 @@ public class EmployeeDAO
 				int id = rs.getInt("id");
 				String fullName = rs.getString("fullname");
 				String userName = rs.getString("username");
-				String password = rs.getString("password");
-				String address = rs.getString("address");
-				String contact = rs.getString("contact");
+				String state = rs.getString("state");
+				String phone = rs.getString("phone");
 
-				emps.add(new Employee(id, fullName, userName, password, address, contact));
+				emps.add(new Employee(id, fullName, userName, state, phone));
 			}
 		}
 		catch (SQLException e)
@@ -180,9 +178,8 @@ public class EmployeeDAO
 		{
 			preparedStatement.setString(1, emp.getFullName());
 			preparedStatement.setString(3, emp.getUserName());
-			preparedStatement.setString(4, emp.getPassword());
-			preparedStatement.setString(5, emp.getAddress());
-			preparedStatement.setString(6, emp.getContact());
+			preparedStatement.setString(4, emp.getState());
+			preparedStatement.setString(5, emp.getPhone());
 
 			// Step 3: Execute the query or update query if more than 0.
 			empUpdate = preparedStatement.executeUpdate() > 0;

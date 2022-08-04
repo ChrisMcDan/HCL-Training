@@ -111,11 +111,10 @@ public class EmployeeController extends HttpServlet
 	{
 		String fullName = request.getParameter("fullname");
 		String userName = request.getParameter("username");
-		String password = request.getParameter("password");
-		String address = request.getParameter("address");
-		String contact = request.getParameter("contact");
+		String state = request.getParameter("state");
+		String phone = request.getParameter("phone");
 		
-		Employee newEmp = new Employee(0, fullName, userName, password, address, contact);
+		Employee newEmp = new Employee(0, fullName, userName, state, phone);
 		empDAO.insertEmp(newEmp);
 		response.sendRedirect("list");
 	}
@@ -127,11 +126,10 @@ public class EmployeeController extends HttpServlet
 		
 		String fullName = request.getParameter("fullname");
 		String userName = request.getParameter("username");
-		String password = request.getParameter("password");
-		String address = request.getParameter("address");
-		String contact = request.getParameter("contact");
+		String state = request.getParameter("state");
+		String phone = request.getParameter("phone");
 		
-		Employee empUpdate = new Employee(id, fullName, userName, password, address, contact);
+		Employee empUpdate = new Employee(id, fullName, userName, state, phone);
 		empDAO.updateEmp(empUpdate);
 		response.sendRedirect("list");
 	}
