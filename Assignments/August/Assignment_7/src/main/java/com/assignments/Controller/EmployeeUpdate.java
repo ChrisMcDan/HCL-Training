@@ -39,33 +39,32 @@ public class EmployeeUpdate extends HttpServlet
 		employeeDAO = new EmployeeDAO();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		int id = Integer.parseInt(request.getParameter("id"));
 		String fullname = request.getParameter("fullname");
-        String username = request.getParameter("username");
-        String state = request.getParameter("state");
-        String phone = request.getParameter("phone");
+		String username = request.getParameter("username");
+		String state = request.getParameter("state");
+		String phone = request.getParameter("phone");
 
-        Employee employee = new Employee();//model object
-        
-        employee.setFullname(fullname);
-        employee.setUsername(username);
-        employee.setState(state);
-        employee.setPhone(phone);
-        employee.setId(id);
-        
-        try
-        {
-        	employeeDAO.updateEmp(employee);
-        }
-        catch(Exception e)
-        {
-        	e.printStackTrace();
-        }
-        
-        RequestDispatcher rd = request.getRequestDispatcher("success.jsp");
+		Employee employee = new Employee();// model object
+
+		employee.setFullname(fullname);
+		employee.setUsername(username);
+		employee.setState(state);
+		employee.setPhone(phone);
+		employee.setId(id);
+
+		try
+		{
+			employeeDAO.updateEmp(employee);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		RequestDispatcher rd = request.getRequestDispatcher("success.jsp");
 		rd.forward(request, response);
 	}
 }

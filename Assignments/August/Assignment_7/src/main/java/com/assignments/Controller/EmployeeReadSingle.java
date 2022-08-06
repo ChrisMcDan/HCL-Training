@@ -39,15 +39,14 @@ public class EmployeeReadSingle extends HttpServlet
 		employeeDAO = new EmployeeDAO();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		response.setContentType("text/html");
 
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		Employee employee = new Employee();
-		
+
 		employee.setId(id);
 		request.setAttribute("action", "search");
 
@@ -57,7 +56,7 @@ public class EmployeeReadSingle extends HttpServlet
 			request.setAttribute("employee", employee);
 			System.out.println("Employee requested: " + employee.toString());
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}

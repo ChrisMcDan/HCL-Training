@@ -41,8 +41,7 @@ public class EmployeeReadAll extends HttpServlet
 		employeeDAO = new EmployeeDAO();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		response.setContentType("text/html");
 
@@ -56,7 +55,7 @@ public class EmployeeReadAll extends HttpServlet
 			request.setAttribute("employeeList", empList);
 			System.out.println("List of Employees: " + empList.toString());
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}

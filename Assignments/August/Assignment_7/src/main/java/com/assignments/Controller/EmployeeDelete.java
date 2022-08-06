@@ -39,8 +39,7 @@ public class EmployeeDelete extends HttpServlet
 		employeeDAO = new EmployeeDAO();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		int id = Integer.parseInt(request.getParameter("id"));
 
@@ -54,7 +53,7 @@ public class EmployeeDelete extends HttpServlet
 		{
 			employeeDAO.deleteEmp(employee);
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}

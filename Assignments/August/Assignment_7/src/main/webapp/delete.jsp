@@ -13,7 +13,7 @@
 			<table style="with: 80%">
 				<tr>
 					<td>Id</td>
-					<td><input type="number" name="id" /></td>
+					<td><input type="text" name="id" /></td>
 				</tr>
 			</table>
 			<input type="submit" value="Delete" />

@@ -10,10 +10,10 @@
 	<div align="center">
 		<h1>Employee Search Form</h1>
 		<form action="<%=request.getContextPath()%>/search" method="get">
-			<table style="with: 100%">
+			<table style="with: 80%">
 				<tr>
 					<td>Id</td>
-					<td><input type="number" name="id" /></td>
+					<td><input type="text" name="id" /></td>
 				</tr>
 			</table>
 			<input type="submit" value="Search" />

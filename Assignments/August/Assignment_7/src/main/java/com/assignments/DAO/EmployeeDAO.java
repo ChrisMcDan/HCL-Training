@@ -21,6 +21,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,20 +29,54 @@ import com.assignments.Model.Employee;
 
 public class EmployeeDAO
 {
+	private static final String CREATE_DATABASE_SQL = "CREATE DATABASE IF NOT EXISTS Assignment_7;";
+
+	private static final String CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS employee"
+			+ "	(id INT NOT NULL AUTO_INCREMENT," + " fullname varchar(20) DEFAULT NULL,"
+			+ " username varchar(25) DEFAULT NULL," + " state VARCHAR(25) DEFAULT NULL,"
+			+ " phone varchar(25) DEFAULT NULL," + " PRIMARY KEY(id));";
+
+	private static final String OPEN_DATABASE_SQL = "USE Assignment_7;";
+
+	private static final String INSERT_EMPLOYEE_SQL = "INSERT INTO employee (fullname, username, state, phone) VALUES"
+			+ " (?, ?, ?, ?);";
+
+	private static final String SELECT_EMPLOYEE_BY_ID = "SELECT * FROM employee WHERE id = ?;";
+
+	private static final String SELECT_ALL_EMPLOYEES = "SELECT * FROM employee;";
+
+	private static final String DELETE_EMPLOYEE_SQL = "DELETE FROM employee WHERE id = ?;";
+
+	private static final String UPDATE_EMPLOYEE_SQL = "UPDATE employee SET fullname = ?, username = ?, state = ?, phone = ?"
+			+ " WHERE id = ?;";
+
 	public EmployeeDAO(){}
 
 	protected Connection getConnection()
 	{
 		Connection connection = null;
 
+		EmployeeDAO empDAO = new EmployeeDAO();
+
 		try
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/A7?useSSL=false", "root", null);
-		} catch (SQLException e)
+			connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?user=root");
+
+			try
+			{
+				empDAO.createTable(connection);
+			}
+			catch(SQLException ex)
+			{
+				ex.printStackTrace();
+			}
+		}
+		catch(SQLException e)
 		{
 			e.printStackTrace();
-		} catch (ClassNotFoundException e)
+		}
+		catch(ClassNotFoundException e)
 		{
 			e.printStackTrace();
 		}
@@ -49,13 +84,27 @@ public class EmployeeDAO
 		return connection;
 	}
 
-	public int insertEmp(Employee employee) throws ClassNotFoundException
+	public void createTable(Connection connection) throws SQLException
 	{
-		String INSERT_EMPLOYEE_SQL = "INSERT INTO employee (id, fullname, username, state, phone) VALUES"
-				+ " (?, ?, ?, ?, ?);";
+		// Step 1: Establish a Connection.
+		try (Statement statement = connection.createStatement())
+		{
+			try
+			{
+				// Step 3: Execute the query or update query.
+				statement.execute(CREATE_DATABASE_SQL);
+				statement.execute(OPEN_DATABASE_SQL);
+				statement.execute(CREATE_TABLE_SQL);
+			}
+			catch(SQLException ex)
+			{
+				ex.printStackTrace();
+			}
+		}
+	}
 
-		int result = 0;
-
+	public void insertEmp(Employee employee) throws ClassNotFoundException
+	{
 		// try-with-resources -> it will close connection automatically. You don't have
 		// to handle with finally block.
 		// Step 1: Establish a Connection.
@@ -63,27 +112,24 @@ public class EmployeeDAO
 				// Step 2:Create a statement using Connection object.
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_EMPLOYEE_SQL))
 		{
-			preparedStatement.setInt(1, 3);
-			preparedStatement.setString(2, employee.getFullname());
-			preparedStatement.setString(3, employee.getUsername());
-			preparedStatement.setString(4, employee.getState());
-			preparedStatement.setString(5, employee.getPhone());
+			preparedStatement.setString(1, employee.getFullname());
+			preparedStatement.setString(2, employee.getUsername());
+			preparedStatement.setString(3, employee.getState());
+			preparedStatement.setString(4, employee.getPhone());
 
 			System.out.println(preparedStatement);
 			// Step 3: Execute the query or update query.
 			preparedStatement.executeUpdate();
 		}
-		catch (SQLException e)
+		catch(SQLException e)
 		{
 			// Process SQL exception.
 			printSQLException(e);
 		}
-		return result;
 	}
 
 	public Employee readSingleEmp(Employee employee) throws ClassNotFoundException, SQLException
 	{
-		String SELECT_EMPLOYEE_BY_ID = "SELECT * FROM employee WHERE id = ?;";
 		Employee emp = null;
 
 		// Step 1: Establish a Connection.
@@ -109,7 +155,7 @@ public class EmployeeDAO
 				emp.setPhone(rs.getString(5));
 			}
 		}
-		catch (SQLException e)
+		catch(SQLException e)
 		{
 			// Process SQL exception.
 			printSQLException(e);
@@ -119,8 +165,6 @@ public class EmployeeDAO
 
 	public List<Employee> readAllEmp() throws ClassNotFoundException, SQLException
 	{
-		String SELECT_ALL_EMPLOYEES = "SELECT * FROM employee;";
-
 		List<Employee> empList = null;
 
 		// Step 1: Establish a Connection.
@@ -146,7 +190,7 @@ public class EmployeeDAO
 				empList.add(emp);
 			}
 		}
-		catch (SQLException e)
+		catch(SQLException e)
 		{
 			printSQLException(e);
 		}
@@ -155,8 +199,6 @@ public class EmployeeDAO
 
 	public int deleteEmp(Employee employee) throws ClassNotFoundException
 	{
-		String DELETE_EMPLOYEE_SQL = "DELETE FROM employee WHERE id = ?;";
-
 		int result = 0;
 
 		// Step 1: Establish a Connection.
@@ -170,7 +212,7 @@ public class EmployeeDAO
 			// Step 3: Execute the query or update query.
 			result = preparedStatement.executeUpdate();
 		}
-		catch (SQLException e)
+		catch(SQLException e)
 		{
 			printSQLException(e);
 		}
@@ -179,9 +221,6 @@ public class EmployeeDAO
 
 	public int updateEmp(Employee employee) throws ClassNotFoundException
 	{
-		String UPDATE_EMPLOYEE_SQL = "UPDATE employee SET fullname = ?, username = ?, state = ?, phone = ?"
-				+ " WHERE id = ?;";
-
 		int result = 0;
 
 		// Step 1: Establish a Connection.
@@ -198,8 +237,8 @@ public class EmployeeDAO
 			System.out.println(preparedStatement);
 			// Step 3: Execute the query or update query.
 			result = preparedStatement.executeUpdate();
-		} 
-		catch (SQLException e)
+		}
+		catch(SQLException e)
 		{
 			printSQLException(e);
 		}
