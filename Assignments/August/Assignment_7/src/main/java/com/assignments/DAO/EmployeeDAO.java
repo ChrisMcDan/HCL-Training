@@ -28,59 +28,46 @@ import com.assignments.Model.Employee;
 
 public class EmployeeDAO
 {
-
-	private static final String INSERT_EMPLOYEE_SQL = "INSERT INTO employee"
-			+ "  (fullName, userName, state, phone) VALUES "
-			+ " (?, ?, ?, ?);";
-
-	private static final String SELECT_EMPLOYEE_BY_ID = "SELECT"
-			+ "id, fullName, userName, state, phone"
-			+ "FROM employee WHERE id = ?;";
-
-	private static final String SELECT_ALL_EMPLOYEES = "SELECT * FROM employee;";
-	private static final String DELETE_EMPLOYEE_SQL = "DELETE FROM employee WHERE id = ?;";
-	private static final String UPDATE_EMPLOYEE_SQL = "UPDATE employee SET"
-			+ "fullname = ?, username = ?, state = ?, phone = ?;";
-
 	public EmployeeDAO(){}
 
-	protected Connection getConn()
+	protected Connection getConnection()
 	{
-		Connection conn = null;
+		Connection connection = null;
 
 		try
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee", "root", null);
-		}
-		catch (SQLException e)
+			connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/A7?useSSL=false", "root", null);
+		} catch (SQLException e)
 		{
 			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e)
+		} catch (ClassNotFoundException e)
 		{
 			e.printStackTrace();
 		}
 
-		return conn;
+		return connection;
 	}
 
-	public void insertEmp(Employee emp) throws SQLException
+	public int insertEmp(Employee employee) throws ClassNotFoundException
 	{
-		System.out.println(INSERT_EMPLOYEE_SQL);
+		String INSERT_EMPLOYEE_SQL = "INSERT INTO employee (id, fullname, username, state, phone) VALUES"
+				+ " (?, ?, ?, ?, ?);";
+
+		int result = 0;
 
 		// try-with-resources -> it will close connection automatically. You don't have
-		// to handle
-		// with finally block.
+		// to handle with finally block.
 		// Step 1: Establish a Connection.
-		try (Connection conn = getConn();
+		try (Connection connection = getConnection();
 				// Step 2:Create a statement using Connection object.
-				PreparedStatement preparedStatement = conn.prepareStatement(INSERT_EMPLOYEE_SQL);)
+				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_EMPLOYEE_SQL))
 		{
-			preparedStatement.setString(1, emp.getFullName());
-			preparedStatement.setString(3, emp.getUserName());
-			preparedStatement.setString(4, emp.getState());
-			preparedStatement.setString(5, emp.getPhone());
+			preparedStatement.setInt(1, 3);
+			preparedStatement.setString(2, employee.getFullname());
+			preparedStatement.setString(3, employee.getUsername());
+			preparedStatement.setString(4, employee.getState());
+			preparedStatement.setString(5, employee.getPhone());
 
 			System.out.println(preparedStatement);
 			// Step 3: Execute the query or update query.
@@ -91,23 +78,36 @@ public class EmployeeDAO
 			// Process SQL exception.
 			printSQLException(e);
 		}
+		return result;
 	}
 
-	public Employee readSingleUser(int id)
+	public Employee readSingleEmp(Employee employee) throws ClassNotFoundException, SQLException
 	{
+		String SELECT_EMPLOYEE_BY_ID = "SELECT * FROM employee WHERE id = ?;";
 		Employee emp = null;
 
 		// Step 1: Establish a Connection.
-		try (Connection conn = getConn();
+		try (Connection connection = getConnection();
 				// Step 2:Create a statement using Connection object.
-				PreparedStatement preparedStatement = conn.prepareStatement(SELECT_EMPLOYEE_BY_ID);)
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_EMPLOYEE_BY_ID))
 		{
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, employee.getId());
 
 			System.out.println(preparedStatement);
 
 			// Step 3: Execute the query or update query.
-			preparedStatement.executeQuery();
+			ResultSet rs = preparedStatement.executeQuery();
+
+			emp = new Employee();
+			// Step 4: Process the ResultSet object.
+			while (rs.next())
+			{
+				emp.setId(rs.getInt(1));
+				emp.setFullname(rs.getString(2));
+				emp.setUsername(rs.getString(3));
+				emp.setState(rs.getString(4));
+				emp.setPhone(rs.getString(5));
+			}
 		}
 		catch (SQLException e)
 		{
@@ -117,74 +117,93 @@ public class EmployeeDAO
 		return emp;
 	}
 
-	public List<Employee> readAllEmp()
+	public List<Employee> readAllEmp() throws ClassNotFoundException, SQLException
 	{
-		List<Employee> emps = new ArrayList<>();
+		String SELECT_ALL_EMPLOYEES = "SELECT * FROM employee;";
+
+		List<Employee> empList = null;
 
 		// Step 1: Establish a Connection.
-		try (Connection conn = getConn();
+		try (Connection connection = getConnection();
 				// Step 2:Create a statement using Connection object.
-				PreparedStatement preparedStatement = conn.prepareStatement(SELECT_ALL_EMPLOYEES);)
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_EMPLOYEES))
 		{
 			System.out.println(preparedStatement);
 
 			// Step 3: Execute the query or update query.
 			ResultSet rs = preparedStatement.executeQuery();
+			empList = new ArrayList<Employee>();
 
 			// Step 4: Process the ResultSet object.
 			while (rs.next())
 			{
-				int id = rs.getInt("id");
-				String fullName = rs.getString("fullname");
-				String userName = rs.getString("username");
-				String state = rs.getString("state");
-				String phone = rs.getString("phone");
-
-				emps.add(new Employee(id, fullName, userName, state, phone));
+				Employee emp = new Employee();
+				emp.setId(rs.getInt(1));
+				emp.setFullname(rs.getString(2));
+				emp.setUsername(rs.getString(3));
+				emp.setState(rs.getString(4));
+				emp.setPhone(rs.getString(5));
+				empList.add(emp);
 			}
 		}
 		catch (SQLException e)
 		{
 			printSQLException(e);
 		}
-		return emps;
+		return empList;
 	}
 
-	public boolean deleteEmp(int id) throws SQLException
+	public int deleteEmp(Employee employee) throws ClassNotFoundException
 	{
-		boolean empDelete;
+		String DELETE_EMPLOYEE_SQL = "DELETE FROM employee WHERE id = ?;";
+
+		int result = 0;
 
 		// Step 1: Establish a Connection.
-		try (Connection conn = getConn();
+		try (Connection connection = getConnection();
 				// Step 2:Create a statement using Connection object.
-				PreparedStatement preparedStatement = conn.prepareStatement(DELETE_EMPLOYEE_SQL);)
+				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_EMPLOYEE_SQL))
 		{
-			preparedStatement.setInt(1, id);;
+			preparedStatement.setInt(1, employee.getId());;
 
-			// Step 3: Execute the query or update query if more than 0.
-			empDelete = preparedStatement.executeUpdate() > 0;
+			System.out.println(preparedStatement);
+			// Step 3: Execute the query or update query.
+			result = preparedStatement.executeUpdate();
 		}
-		return empDelete;
+		catch (SQLException e)
+		{
+			printSQLException(e);
+		}
+		return result;
 	}
 
-	public boolean updateEmp(Employee emp) throws SQLException
+	public int updateEmp(Employee employee) throws ClassNotFoundException
 	{
-		boolean empUpdate;
+		String UPDATE_EMPLOYEE_SQL = "UPDATE employee SET fullname = ?, username = ?, state = ?, phone = ?"
+				+ " WHERE id = ?;";
+
+		int result = 0;
 
 		// Step 1: Establish a Connection.
-		try (Connection conn = getConn();
+		try (Connection connection = getConnection();
 				// Step 2:Create a statement using Connection object.
-				PreparedStatement preparedStatement = conn.prepareStatement(UPDATE_EMPLOYEE_SQL);)
+				PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_EMPLOYEE_SQL))
 		{
-			preparedStatement.setString(1, emp.getFullName());
-			preparedStatement.setString(3, emp.getUserName());
-			preparedStatement.setString(4, emp.getState());
-			preparedStatement.setString(5, emp.getPhone());
+			preparedStatement.setString(1, employee.getFullname());
+			preparedStatement.setString(2, employee.getUsername());
+			preparedStatement.setString(3, employee.getState());
+			preparedStatement.setString(4, employee.getPhone());
+			preparedStatement.setInt(5, employee.getId());
 
-			// Step 3: Execute the query or update query if more than 0.
-			empUpdate = preparedStatement.executeUpdate() > 0;
+			System.out.println(preparedStatement);
+			// Step 3: Execute the query or update query.
+			result = preparedStatement.executeUpdate();
+		} 
+		catch (SQLException e)
+		{
+			printSQLException(e);
 		}
-		return empUpdate;
+		return result;
 	}
 
 	private void printSQLException(SQLException ex)
