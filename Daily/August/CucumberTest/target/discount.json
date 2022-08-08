@@ -1,0 +1,168 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "Verify 10% offer",
+        "description": "",
+        "id": "evaluate-percentage;verify-10%-offer",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 81362900,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "Execute DiscountService Business",
+            "match": {
+              "location": "DiscountServiceTest.execute_DiscountService_Business()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1392000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "if i will enter 5001",
+            "match": {
+              "arguments": [
+                {
+                  "val": "5001",
+                  "offset": 16
+                }
+              ],
+              "location": "DiscountServiceTest.if_i_will_enter(int)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1156200,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "we should get ten percentage discount",
+            "match": {
+              "location": "DiscountServiceTest.we_should_get_ten_percentage_discount()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 8,
+        "name": "Verify 15% offer",
+        "description": "",
+        "id": "evaluate-percentage;verify-15%-offer",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 24300,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "Execute DiscountService Business",
+            "match": {
+              "location": "DiscountServiceTest.execute_DiscountService_Business()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 110800,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "if i will enter 11000",
+            "match": {
+              "arguments": [
+                {
+                  "val": "11000",
+                  "offset": 16
+                }
+              ],
+              "location": "DiscountServiceTest.if_i_will_enter(int)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 17000,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "we should get fifteen percentage discount",
+            "match": {
+              "location": "DiscountServiceTest.we_should_get_fifteen_percentage_discount()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 13,
+        "name": "Verify No offer",
+        "description": "",
+        "id": "evaluate-percentage;verify-no-offer",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 21500,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "Execute DiscountService Business",
+            "match": {
+              "location": "DiscountServiceTest.execute_DiscountService_Business()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 62700,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "if i will enter 4000",
+            "match": {
+              "arguments": [
+                {
+                  "val": "4000",
+                  "offset": 16
+                }
+              ],
+              "location": "DiscountServiceTest.if_i_will_enter(int)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 25500,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "we shouldn\u0027t get any percentage",
+            "match": {
+              "location": "DiscountServiceTest.we_shouldn_t_get_any_percentage()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Evaluate percentage",
+    "description": "",
+    "id": "evaluate-percentage",
+    "keyword": "Feature",
+    "uri": "Discount.feature"
+  }
+]
