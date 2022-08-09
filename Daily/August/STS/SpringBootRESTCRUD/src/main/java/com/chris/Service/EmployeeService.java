@@ -1,3 +1,5 @@
+/*August 5, 2022*/
+
 package com.chris.Service;
 
 import java.util.List;
@@ -13,23 +15,23 @@ import com.chris.Repo.EmployeeRepository;
 public class EmployeeService
 {
 	@Autowired
-	EmployeeRepository repo;
-	
+	EmployeeRepository repo; // HAS A
+
 	public List<Employee> getAllEmps()
 	{
 		return repo.findAll();
 	}
-	
+
 	public Optional<Employee> getEmpById(int id)
 	{
 		return repo.findById(id);
 	}
-	
+
 	public void deleteEmp(Integer id)
 	{
 		repo.deleteById(id);
 	}
-	
+
 	public void addEmp(Employee emp)
 	{
 		repo.save(emp);

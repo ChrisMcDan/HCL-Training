@@ -1,3 +1,5 @@
+/*August 5, 2022*/
+
 package com.chris.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +12,11 @@ public class ChrisController
 {
 	@Autowired
 	JdbcTemplate jdbc;
+
 	@GetMapping("/insert")
 	public String index()
 	{
 		jdbc.execute("INSERT INTO user(name, email) VALUES('Chris', 'chrismcdan97@gmail.com')");
-		return 
+		return "Data inserted Successfully";
 	}
 }

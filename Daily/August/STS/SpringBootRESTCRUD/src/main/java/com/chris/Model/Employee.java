@@ -1,3 +1,5 @@
+/*August 5, 2022*/
+
 package com.chris.Model;
 
 import javax.persistence.Entity;
@@ -14,10 +16,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "emp_july")	//Table name
+@Table(name = "emp_july") // Table name
 public class Employee
 {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int empId;
 	private String name;
 	private String designation;
