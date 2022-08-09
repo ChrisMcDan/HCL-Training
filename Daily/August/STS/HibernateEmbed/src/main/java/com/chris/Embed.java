@@ -4,7 +4,7 @@ package com.chris;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
 
 public class Embed
 {
@@ -25,7 +25,7 @@ public class Embed
 		UserDetails usr1 = new UserDetails("Colin", addr1);
 		UserDetails usr2 = new UserDetails("Bin", addr2);
 
-		SessionFactory sf = new AnnotationConfiguration().configure().buildSessionFactory();
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		Session s1 = sf.openSession();
 		s1.beginTransaction();
 		s1.save(usr1);
