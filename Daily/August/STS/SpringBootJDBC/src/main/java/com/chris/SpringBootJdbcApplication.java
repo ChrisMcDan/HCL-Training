@@ -12,5 +12,4 @@ public class SpringBootJdbcApplication
 	{
 		SpringApplication.run(SpringBootJdbcApplication.class, args);
 	}
-
 }

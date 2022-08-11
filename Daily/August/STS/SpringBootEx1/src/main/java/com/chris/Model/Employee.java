@@ -17,15 +17,15 @@ public class Employee
 {
 	private int eid;
 	private String ename;
-	
+
 	@Autowired
-	private Department department;
-	
+	private Department department; // HAS A
+
 	public void showEmployeeDetails()
 	{
 		System.out.println("Employee ID: " + eid);
 		System.out.println("Employee Name: " + ename);
-		department.setDeptName("Information Technology");;
+		department.setDeptName("Information Technology");
 		System.out.println("Department: " + department.getDeptName());
 	}
 }

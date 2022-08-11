@@ -26,8 +26,10 @@ public class User
 
 	@Column(name = "user_id") // Column name for the user table.
 	private int id;
+	
 	@Column(name = "user_name")
 	private String name;
+	
 	@Column(name = "user_email")
 	private String email;
 }
