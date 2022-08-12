@@ -8,5 +8,5 @@ import com.chris.Model.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>
 {
-
+	
 }

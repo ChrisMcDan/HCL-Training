@@ -12,7 +12,7 @@
 	</parent>
 
 	<groupId>com.daily</groupId>
-	<artifactId>HibernateEx</artifactId>
+	<artifactId>SpringBootSlf4j</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>SpringBootSlf4j</name>
 	<description>Demo project for Spring Boot Slf4j</description>
