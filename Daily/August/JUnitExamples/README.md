@@ -1,0 +1,1 @@
+# Shown examples of how to utilize JUnit in a project.
