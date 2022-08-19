@@ -1,0 +1,27 @@
+{{title}} is running <br/> Interpolation
+<h1>{{name}}</h1>
+
+<!--Property Binding-->
+<button [disabled] = "isDisabled">Disabled</button>
+
+<!--Event Binding-->
+<input type = "text" [value] = "fruits" (input) = "fruits = getValue($event)">
+<p> You have entered {{fruits}}</p>
+<button (click) = 'clearFruits()'>Clear Fruits</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<router-outlet></router-outlet>
+

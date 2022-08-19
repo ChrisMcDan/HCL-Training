@@ -48,3 +48,15 @@ function createEmp(newEmp, callback)
 
 getAllEmps();   //1000 ms
 createEmp({ ename: 'Ajaydeep', email: 'ajay@gmail.com' }, getAllEmps);    //2000 ms
+
+//Ex3
+//Intro to Promised Objects.
+let promise1 = new Promise(function (resolve, reject)
+{
+    setTimeout(() => resolve("Success"), 1000);
+});
+
+let promise2 = new Promise(function (resolve, reject)
+{
+    setTimeout(() => reject(new Error("Failure")), 1000);
+});
