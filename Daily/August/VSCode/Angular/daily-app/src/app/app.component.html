@@ -1,27 +1,33 @@
-{{title}} is running <br/> Interpolation
-<h1>{{name}}</h1>
+{{ title }} is running <br />
+Interpolation
+<h1>{{ name }}</h1>
 
 <!--Property Binding-->
-<button [disabled] = "isDisabled">Disabled</button>
+<button [disabled]="isDisabled">Disabled</button>
 
-<!--Event Binding-->
-<input type = "text" [value] = "fruits" (input) = "fruits = getValue($event)">
-<p> You have entered {{fruits}}</p>
-<button (click) = 'clearFruits()'>Clear Fruits</button>
+<label>Fruits
+  <input type="text" [value]="fruits" (input)="fruits = getValue($event)" />
+</label>
+<p>You have entered {{ fruits }}</p>  <!-- Interpolation -->
+<button (click)="clearFruits()">Clear Fruits</button> <!-- Event Binding -->
 
+<app-employee></app-employee>
+<app-customer></app-customer>
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar header">
+      <a class="navbar = brand" routerLink="Employee">Employee</a>
+    </div>
+  </div>
 
+  <ul>
+    <li routerLinkActive="active"><a routerLink="Employee">Employee</a></li>
+    <li routerLinkActive="active"><a routerLink="Customer">Customer</a></li>
+    <li routerLinkActive="active"><a routerLink="Supplier">Supplier</a></li>
+  </ul>
+</nav>
 
-
-
-
-
-
-
-
-
-
-
-
-<router-outlet></router-outlet>
-
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

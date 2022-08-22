@@ -1,0 +1,6 @@
+[
+  { "productid": "100", "productname": "Laptop" },
+  { "productid": "101", "productname": "Desktop" },
+  { "productid": "102", "productname": "Phone" },
+  { "productid": "103", "productname": "Mouse" }
+]
